@@ -10,12 +10,12 @@ class CRUD_Usuarios:
         self.misUsuarios.append(Usuario(0,"Usuario","Maestro","admin","admin",True))
 
     #método para creación de usuarios propios
-    #retornos: 1: creado, 2:UserName no empieza con Mayúscula, 3: userName no es alfanumerica,
+    #retornos: 1: creado, 2:UserName no empieza con letra, 3: userName no es alfanumerica,
     # 4: userName ya existe, 5:contraseñas no coinciden
     def crear_Usuario(self,nombre,apellido,userName,contrasena,contrasena2):
         #Si el primer caracter de userName no es mayúscula
-        if userName[0].isupper() == False:
-            print("UserName no empieza con Mayúscula")
+        if userName[0].isalphar() == False:
+            print("UserName no empieza con una letra")
             return 2
         #Si la cadena userName no es alfanumerica
         elif userName.isalnum() == False:
