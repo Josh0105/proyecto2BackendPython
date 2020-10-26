@@ -30,6 +30,23 @@ def login():
         response['estado'] = 0
         return response
 
+@app.route('/registro', methods =["POST"])
+def registro():
+    if request.method == 'POST':
+
+        response = {}
+
+        nombre = request.form.get('nombre')
+        apellido = request.form.get('apellido')
+        userName = request.form.get('user_name')
+        contrasena = request.form.get('contrasena')
+        contrasena2 = request.form.get('contrasena2')
+
+        estadoCreacion = var_Usuarios.crear_Usuario(nombre,apellido,userName,contrasena,contrasena2)
+
+        response['estado_creacion'] = estadoCreacion
+        return response
+
 
 @app.route("/")
 def index():
