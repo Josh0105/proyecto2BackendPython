@@ -14,7 +14,7 @@ class CRUD_Usuarios:
     # 4: userName ya existe, 5:contraseñas no coinciden
     def crear_Usuario(self,nombre,apellido,userName,contrasena,contrasena2):
         #Si el primer caracter de userName no es mayúscula
-        if userName[0].isalphar() == False:
+        if userName[0].isalpha() == False:
             print("UserName no empieza con una letra")
             return 2
         #Si la cadena userName no es alfanumerica
