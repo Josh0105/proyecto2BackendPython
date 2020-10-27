@@ -7,7 +7,7 @@ import os
 
 var_Usuarios = CRUD_Usuarios()
 var_Juegos = CRUD_VidoJuego()
-var_Juegos.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
+#var_Juegos.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
 #var_Juegos.listar_Juegos()
 
 app = Flask(__name__)
