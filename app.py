@@ -69,7 +69,7 @@ def recuperar():
 
 @app.route('/obtener-todos-juegos')
 def obtenerTododosJuegos():
-    return var_Juegos.devolver_Juegos
+    return var_Juegos.devolver_Juegos()
 
 @app.route("/")
 def index():
