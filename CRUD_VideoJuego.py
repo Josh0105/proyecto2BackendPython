@@ -57,6 +57,6 @@ class CRUD_VidoJuego:
     def devolver_Usuarios(self):
         return json.dumps([juego.dump() for juego in self.listaJuegos])
 
-pruebaJuegoCRUD = CRUD_VidoJuego()
-pruebaJuegoCRUD.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos.csv")
-pruebaJuegoCRUD.listar_Juegos()
+#pruebaJuegoCRUD = CRUD_VidoJuego()
+#pruebaJuegoCRUD.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos.csv")
+#pruebaJuegoCRUD.listar_Juegos()
