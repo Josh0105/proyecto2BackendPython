@@ -54,7 +54,7 @@ class CRUD_VidoJuego:
             print("index" + str(self.listaJuegos.index(juego)) + "\tid:" + str(juego.id) + "\t" + juego.nombre + "\t" + str(juego.anio) + "\t" + str(juego.precio) + "\t" + juego.categoria1 + "\t" + juego.categoria2 + "\t" + juego.categoria3 + "\t" + juego.foto + "\t" + juego.banner + "\t" +juego.descripcion)
     
     #devuelve los juegos en formato json
-    def devolver_Usuarios(self):
+    def devolver_Juegos(self):
         return json.dumps([juego.dump() for juego in self.listaJuegos])
 
 #pruebaJuegoCRUD = CRUD_VidoJuego()

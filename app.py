@@ -6,9 +6,9 @@ from CRUD_VideoJuego import CRUD_VidoJuego
 
 var_Usuarios = CRUD_Usuarios()
 
-JuegosCRUD = CRUD_VidoJuego()
-JuegosCRUD.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
-JuegosCRUD.listar_Juegos()
+var_Juegos = CRUD_VidoJuego()
+var_Juegos.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
+var_Juegos.listar_Juegos()
 
 app = Flask(__name__)
 CORS(app)
@@ -66,6 +66,10 @@ def recuperar():
             return response
         response['estado'] = 0
         return response
+
+@app.route('/obtener-todos-juegos')
+def obtenerTododosJuegos():
+    return var_Juegos.devolver_Juegos
 
 @app.route("/")
 def index():
