@@ -51,6 +51,21 @@ def registro():
         response['estado_creacion'] = estadoCreacion
         return response
 
+@app.route('/recuperar',methods =["POST"])
+def recuperar():
+    if request.method == 'POST':
+        response = {}
+
+        userName = request.form.get('user_name')
+
+        usuarioRecuperar = var_Usuarios.recuperar_Contrasena(userName)
+
+        if usuarioRecuperar is not False:
+            response['contrasena'] = usuarioRecuperar.contrasena
+            response['estado'] = 1
+            return response
+        response['estado'] = 0
+        return response
 
 @app.route("/")
 def index():
