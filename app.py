@@ -14,6 +14,14 @@ var_Juegos.listar_Juegos()
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/upload", methods=['POST'])
+def uploader():
+    if request.method == 'POST':
+        f = request.files['archivo']
+        filename = secure_filename(f.filename)
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return "<h1>Archivo subido exitosamente</h1>"
+
 @app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
