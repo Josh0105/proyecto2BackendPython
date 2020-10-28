@@ -15,7 +15,7 @@ CORS(app)
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 try:
-    os.makedirs(uploads_dir)
+    os.mkdir(uploads_dir)
 except OSError:
     if not os.path.isdir(uploads_dir):
         raise
