@@ -13,7 +13,7 @@ var_Juegos = CRUD_VidoJuego()
 app = Flask(__name__)
 CORS(app)
 
-uploads_dir = os.path.join(app.instance_path, 'uploads')
+uploads_dir = os.path.join('uploads')
 try:
     os.mkdir(uploads_dir)
 except OSError:
