@@ -13,14 +13,14 @@ var_Juegos = CRUD_VidoJuego()
 app = Flask(__name__)
 CORS(app)
 
-app.uploads_dir = os.path.join(app.instance_path, 'uploads')
-try:
-    os.makedirs(app.uploads_dir)
-except OSError:
-    if not os.path.isdir(app.uploads_dir):
-        raise
+#uploads_dir = os.path.join(app.instance_path, 'uploads')
+#try:
+#    os.makedirs(uploads_dir)
+#except OSError:
+#    if not os.path.isdir(uploads_dir):
+#        raise
 
-var_Juegos.cargaMasiva(app.uploads_dir + "\\datosJuegos1.csv")
+#var_Juegos.cargaMasiva(uploads_dir + "\\datosJuegos1.csv")
 
 
 
@@ -81,6 +81,14 @@ def recuperar():
 
 @app.route('/obtener-todos-juegos')
 def obtenerTododosJuegos():
+    uploads_dir = os.path.join(app.instance_path, 'uploads')
+    try:
+        os.makedirs(uploads_dir)
+    except OSError:
+        if not os.path.isdir(uploads_dir):
+            raise
+
+    var_Juegos.cargaMasiva(uploads_dir + "\\datosJuegos1.csv")
     return var_Juegos.devolver_Juegos()
 
 @app.route("/")
