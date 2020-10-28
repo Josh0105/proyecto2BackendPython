@@ -44,7 +44,8 @@ class CRUD_VidoJuego:
                         #ESTA LINEA CREA EL JUEGO
                         self.crearJuego(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
                     self.conteoLineas +=1
-        except:
+        except Exception as e:
+            print(e)
             print("no se pudo realizar la lectura")
             return False
     
