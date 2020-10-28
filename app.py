@@ -13,15 +13,15 @@ var_Juegos = CRUD_VidoJuego()
 app = Flask(__name__)
 CORS(app)
 
-uploads_dir = os.path.join(app.instance_path, 'uploads')
+app.uploads_dir = os.path.join(app.instance_path, 'uploads')
 try:
-    os.makedirs(uploads_dir)
+    os.makedirs(app.uploads_dir)
 except OSError:
-    if not os.path.isdir(uploads_dir):
+    if not os.path.isdir(app.uploads_dir):
         raise
 
 
-var_Juegos.cargaMasiva(uploads_dir + "\\datosJuegos1.csv")
+var_Juegos.cargaMasiva(app.uploads_dir + "\\datosJuegos1.csv")
 
 
 
