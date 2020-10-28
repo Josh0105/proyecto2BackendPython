@@ -13,6 +13,15 @@ var_Juegos.listar_Juegos()
 
 app = Flask(__name__)
 CORS(app)
+app.config['UPLOAD_FOLDER'] = './instance'
+#uploads_dir = os.path.join(app.instance_path, 'uploads')
+#try:
+#    os.makedirs(uploads_dir)
+#except OSError:
+#    if not os.path.isdir(uploads_dir):
+#        raise
+
+
 
 @app.route("/upload", methods=['POST'])
 def uploader():
