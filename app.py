@@ -20,6 +20,7 @@ except OSError:
     if not os.path.isdir(uploads_dir):
         raise
 
+
 var_Juegos.cargaMasiva(uploads_dir + "\\datosJuegos1.csv")
 
 
