@@ -1,29 +1,18 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from Usuario import Usuario
 from CRUD_Usuarios import CRUD_Usuarios
 from CRUD_VideoJuego import CRUD_VidoJuego
 import os
+from werkzeug.utils import secure_filename
 
 var_Usuarios = CRUD_Usuarios()
 var_Juegos = CRUD_VidoJuego()
-#var_Juegos.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
-#var_Juegos.listar_Juegos()
+var_Juegos.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
+var_Juegos.listar_Juegos()
 
 app = Flask(__name__)
 CORS(app)
-
-uploads_dir = os.path.join(app.instance_path, 'uploads')
-try:
-    os.makedirs(uploads_dir)
-except OSError:
-    if not os.path.isdir(uploads_dir):
-        raise
-
-var_Juegos.cargaMasiva(uploads_dir+"/datosJuegos1.csv")
-
-
-
 
 @app.route('/login', methods=['POST'])
 def login():
