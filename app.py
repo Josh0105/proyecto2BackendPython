@@ -8,12 +8,18 @@ from werkzeug.utils import secure_filename
 
 var_Usuarios = CRUD_Usuarios()
 var_Juegos = CRUD_VidoJuego()
-var_Juegos.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
+var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","Acción","Aventura","C3","https://tecnogaming.com/wp-content/uploads/2013/04/GTA-V-portada.jpg","https://samwallbutton.files.wordpress.com/2014/10/gta-v-banner.png","Grand Theft Auto V es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games. Fue lanzado el 17 de septiembre de 2013 para las consolas PlayStation 3 y Xbox 360")
+var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","Acción","Aventura","C3","https://tecnogaming.com/wp-content/uploads/2013/04/GTA-V-portada.jpg","https://samwallbutton.files.wordpress.com/2014/10/gta-v-banner.png","Grand Theft Auto V es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games. Fue lanzado el 17 de septiembre de 2013 para las consolas PlayStation 3 y Xbox 360")
+var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","Acción","Aventura","C3","https://tecnogaming.com/wp-content/uploads/2013/04/GTA-V-portada.jpg","https://samwallbutton.files.wordpress.com/2014/10/gta-v-banner.png","Grand Theft Auto V es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games. Fue lanzado el 17 de septiembre de 2013 para las consolas PlayStation 3 y Xbox 360")
+var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","Acción","Aventura","C3","https://tecnogaming.com/wp-content/uploads/2013/04/GTA-V-portada.jpg","https://samwallbutton.files.wordpress.com/2014/10/gta-v-banner.png","Grand Theft Auto V es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games. Fue lanzado el 17 de septiembre de 2013 para las consolas PlayStation 3 y Xbox 360")
+var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","Acción","Aventura","C3","https://tecnogaming.com/wp-content/uploads/2013/04/GTA-V-portada.jpg","https://samwallbutton.files.wordpress.com/2014/10/gta-v-banner.png","Grand Theft Auto V es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games. Fue lanzado el 17 de septiembre de 2013 para las consolas PlayStation 3 y Xbox 360")
+
+#var_Juegos.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
 var_Juegos.listar_Juegos()
 
 app = Flask(__name__)
 CORS(app)
-app.config['UPLOAD_FOLDER'] = './instance'
+#app.config['UPLOAD_FOLDER'] = './instance'
 #uploads_dir = os.path.join(app.instance_path, 'uploads')
 #try:
 #    os.makedirs(uploads_dir)
@@ -21,15 +27,13 @@ app.config['UPLOAD_FOLDER'] = './instance'
 #    if not os.path.isdir(uploads_dir):
 #        raise
 
-
-
-@app.route("/upload", methods=['POST'])
-def uploader():
-    if request.method == 'POST':
-        f = request.files['archivo']
-        filename = secure_filename(f.filename)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return "<h1>Archivo subido exitosamente</h1>"
+#@app.route("/upload", methods=['POST'])
+#def uploader():
+#    if request.method == 'POST':
+#        f = request.files['archivo']
+#        filename = secure_filename(f.filename)
+#        f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+#        return "<h1>Archivo subido exitosamente</h1>"
 
 @app.route('/login', methods=['POST'])
 def login():
