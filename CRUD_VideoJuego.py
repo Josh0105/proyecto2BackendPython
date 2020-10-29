@@ -57,7 +57,7 @@ class CRUD_VidoJuego:
     def devolver_Juego(self,id):
         for juego in self.listaJuegos:
             if juego.id==id:
-                return json.dumps([juego.dump()])
+                return json.dumps(juego.dump())
         return False
 
     #devuelve los juegos en formato json
