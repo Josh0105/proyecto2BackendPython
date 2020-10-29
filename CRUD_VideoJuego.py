@@ -54,10 +54,17 @@ class CRUD_VidoJuego:
         for juego in self.listaJuegos:
             print("index" + str(self.listaJuegos.index(juego)) + "\tid:" + str(juego.id) + "\t" + juego.nombre + "\t" + str(juego.anio) + "\t" + str(juego.precio) + "\t" + juego.categoria1 + "\t" + juego.categoria2 + "\t" + juego.categoria3 + "\t" + juego.foto + "\t" + juego.banner + "\t" +juego.descripcion)
     
+    def devolver_Juego(self,id):
+        for juego in self.listaJuegos:
+            if juego.id==id:
+                return json.dumps([juego.dump()])
+        return False
+
     #devuelve los juegos en formato json
     def devolver_Juegos(self):
         return json.dumps([juego.dump() for juego in self.listaJuegos])
 
 #pruebaJuegoCRUD = CRUD_VidoJuego()
 #pruebaJuegoCRUD.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos.csv")
+#pruebaJuegoCRUD.devolver_Juego(1)
 #pruebaJuegoCRUD.listar_Juegos()

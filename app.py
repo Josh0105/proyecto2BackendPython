@@ -93,6 +93,19 @@ def recuperar():
 def obtenerTododosJuegos():
     return var_Juegos.devolver_Juegos()
 
+@app.route('/obtener-juego')
+def obtener_juego():
+    id = int(request.args.get('id',None))
+    print("se mandó id")
+    game = var_Juegos.devolver_Juego(id)
+
+    if game is not None:
+        return{
+            'estado': 1,
+            'data' : game
+        }
+
+
 @app.route("/")
 def index():
     return "<h1>Bienvenido</h1>"
