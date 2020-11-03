@@ -56,6 +56,19 @@ def login():
         response['estado'] = 0
         return response
 
+@app.route('/agregar-a-biblioteca', methods = ["POST"])
+def agregarABiblioteca():
+    if request.method == "POST":
+        response = {}
+
+        idUser = int(request.form.get('id_usuario'))
+        idJuego = int(request.form.get('id_juego'))
+
+        estadoAgregado = var_Usuarios.agregarABiblioteca(idUser,idJuego)
+        
+        response['estado_agregado'] = estadoAgregado
+        return response
+
 @app.route('/registro', methods =["POST"])
 def registro():
     if request.method == 'POST':

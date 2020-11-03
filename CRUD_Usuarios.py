@@ -113,14 +113,16 @@ class CRUD_Usuarios:
             print("se modificó un usuario con exito")
             return True
 
-    #Agrega un juego a la biblioteca del usuario
+    #Agrega un juego a la biblioteca del usuario retorna 1 si se agrega, 0 si ya se encontraba y 2 si no existe existe
     def agregarABiblioteca(self,idUsuario,idJuego):
         for user in self.misUsuarios:
             if user.id == idUsuario:
-                user.agregarIDJuego(idJuego)
-                return True
+                if(user.agregarIDJuego(idJuego)==True):
+                    return 1
+                else:
+                    return 0
         print("usuario no existe")
-        return False
+        return 2
     
 #var_Usuarios = CRUD_Usuarios()
 #var_Usuarios.crear_Usuario("nombre1","apellido1","Prueba1","contra1","contra1")
