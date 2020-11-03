@@ -43,7 +43,7 @@ class Juego:
             'categoria3': self.categoria3,
             'foto' : self.foto,
             'banner' : self.banner,
-            'descripción' : self.descripcion
+            'descripcion' : self.descripcion
         }
 
     #muestra los datos del juego en consola
