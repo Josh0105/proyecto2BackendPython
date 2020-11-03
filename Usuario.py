@@ -7,6 +7,21 @@ class Usuario:
         self.userName = userName
         self.contrasena = contrasena
         self.admin = admin
+        self.biblioteca = []
+
+    #agrega un id a la lista de juegos a la biblioteca
+    def agregarIDJuego(self,id):
+        for idJuego in self.biblioteca:
+            if idJuego == id:
+                print("El juego ya está en tu biblioteca")
+                return False
+        self.biblioteca.append(id)
+        print("Juego agregado exitosamente")
+        return True
+
+    #devuelve la lista de juegos en la biblioteca del usuario
+    def devolverBiblioteca(self,id):
+        return self.biblioteca
 
     #recibe un usuario y contraseña y valida si es correcto
     def autenticar(self,userName,contrasena):

@@ -113,12 +113,25 @@ class CRUD_Usuarios:
             print("se modificó un usuario con exito")
             return True
 
-
+    #Agrega un juego a la biblioteca del usuario
+    def agregarABiblioteca(self,idUsuario,idJuego):
+        for user in self.misUsuarios:
+            if user.id == idUsuario:
+                user.agregarIDJuego(idJuego)
+                return True
+        print("usuario no existe")
+        return False
+    
 #var_Usuarios = CRUD_Usuarios()
 #var_Usuarios.crear_Usuario("nombre1","apellido1","Prueba1","contra1","contra1")
 #var_Usuarios.crear_Usuario("nombre2","apellido2","Prueba2","contra2","contra2")
 #var_Usuarios.crear_Usuario("nombre3","apellido3","Prueba3","contra3","contra3")
 #var_Usuarios.listar_Usuarios()
+#var_Usuarios.agregarABiblioteca(0,2)
+#var_Usuarios.agregarABiblioteca(0,2)
+#var_Usuarios.agregarABiblioteca(1,2)
+#var_Usuarios.agregarABiblioteca(2,2)
+#var_Usuarios.agregarABiblioteca(4,2)
 #var_Usuarios.devolver_Usuarios()
 #var_Usuarios.autenticar_Usuario("Admin","admin")
 #var_Usuarios.recuperar_Contrasena("Admin")
