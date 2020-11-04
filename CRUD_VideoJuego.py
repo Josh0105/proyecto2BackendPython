@@ -74,6 +74,13 @@ class CRUD_VidoJuego:
     def devolver_Juegos(self):
         return json.dumps([juego.dump() for juego in self.listaJuegos])
 
+    #devuelve los comentarios de un juego en formato json
+    def devolver_ComentariosJuego(self,id):
+        for juego in self.listaJuegos:
+            if juego.id == id:
+                return juego.devolver_comentarios()
+        return False
+
 #pruebaJuegoCRUD = CRUD_VidoJuego()
 #pruebaJuegoCRUD.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos.csv")
 #pruebaJuegoCRUD.devolver_Juego(1)

@@ -1,4 +1,5 @@
 from Comentario import Comentario
+import json
 
 class Juego:
     #CONSTRUCTOR DE JUEGO
@@ -27,8 +28,13 @@ class Juego:
         self.banner = banner
         self.descripcion = descripcion
     
+    #agrega un comentario a la lista de comentarios
     def agregar_Comentario(self,cadena,idUser,fecha):
         self.comentarios.append(Comentario(cadena,idUser,fecha))
+
+    #devuelve los comentarios en formato json
+    def devolver_comentarios(self):
+        return json.dumps([comentario.dump() for comentario in self.comentarios])
 
     #muestra el usuario en formato json
     def dump(self):

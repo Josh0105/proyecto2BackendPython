@@ -3,3 +3,11 @@ class Comentario:
         self.cadena = cadena
         self.idUser = idUser
         self.fecha = fecha
+    
+    def dump(self):
+
+        return{
+            'cadena': self.cadena,
+            'idUser': self.idUser,
+            'fecha': self.fecha            
+        }

@@ -124,6 +124,16 @@ def recuperar():
 def obtenerTododosJuegos():
     return var_Juegos.devolver_Juegos()
 
+@app.route('/obtener-todos-comentarios')
+def obtenerTododosComentarios():
+    id = int(request.args.get('id',None))
+    print("se obtubo id")
+    coments = var_Juegos.devolver_ComentariosJuego(id)
+    
+    if coments is not False:
+        return coments
+
+
 @app.route('/obtener-juego')
 def obtener_juego():
     id = int(request.args.get('id',None))
