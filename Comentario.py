@@ -8,6 +8,6 @@ class Comentario:
 
         return{
             'cadena': self.cadena,
-            'idUser': self.idUser,
+            'nameUser': self.idUser,
             'fecha': self.fecha            
         }
