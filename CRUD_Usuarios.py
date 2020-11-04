@@ -65,6 +65,13 @@ class CRUD_Usuarios:
         for user in self.misUsuarios:
             print("id:\t"+ str(user.id) + "\tnombre:\t" + user.nombre + "\t\tuser:\t" + user.userName+ "\t\tadmin:\t" + str(user.admin))
     
+    #devuelve el nombre de un usuario
+    def devolver_nombre_usuario(self,id):
+        for user in self.misUsuarios:
+            if user.id == id:
+                return user.userName
+        return ""
+
     #devuelve los usuarios en formato json
     def devolver_Usuarios(self):
         return json.dumps([user.dump() for user in self.misUsuarios])
