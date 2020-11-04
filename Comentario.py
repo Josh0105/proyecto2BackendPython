@@ -1,13 +1,13 @@
 class Comentario:
-    def __init__ (self,cadena,idUser,fecha):
+    def __init__ (self,cadena,UserName,fecha):
         self.cadena = cadena
-        self.idUser = idUser
+        self.UserName = UserName
         self.fecha = fecha
     
     def dump(self):
 
         return{
             'cadena': self.cadena,
-            'nameUser': self.idUser,
+            'nameUser': self.UserName,
             'fecha': self.fecha            
         }
