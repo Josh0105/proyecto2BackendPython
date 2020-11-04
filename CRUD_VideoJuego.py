@@ -9,10 +9,10 @@ class CRUD_VidoJuego:
         self.contador = 0
     
     #Agregua un nuevo comentario
-    def nuevoComentario(self,cadena,idUser,fecha,id):
+    def nuevoComentario(self,cadena,UserName,fecha,id):
         for juego in self.listaJuegos:
             if juego.id == id:
-                juego.agregar_Comentario(cadena,idUser,fecha)
+                juego.agregar_Comentario(cadena,UserName,fecha)
                 print("comentario agregado correctamente")
                 return 1
         print("error al agregar comentario")
