@@ -29,8 +29,8 @@ class Juego:
         self.descripcion = descripcion
     
     #agrega un comentario a la lista de comentarios
-    def agregar_Comentario(self,cadena,idUser,fecha):
-        self.comentarios.append(Comentario(cadena,idUser,fecha))
+    def agregar_Comentario(self,cadena,UserName,fecha):
+        self.comentarios.append(Comentario(cadena,UserName,fecha))
 
     #devuelve los comentarios en formato json
     def devolver_comentarios(self):
