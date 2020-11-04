@@ -13,6 +13,9 @@ var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","","Aventura","C3","ht
 var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","Acción","","C3","https://tecnogaming.com/wp-content/uploads/2013/04/GTA-V-portada.jpg","https://samwallbutton.files.wordpress.com/2014/10/gta-v-banner.png","Grand Theft Auto V es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games. Fue lanzado el 17 de septiembre de 2013 para las consolas PlayStation 3 y Xbox 360")
 var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","Acción","Aventura","","https://tecnogaming.com/wp-content/uploads/2013/04/GTA-V-portada.jpg","https://samwallbutton.files.wordpress.com/2014/10/gta-v-banner.png","Grand Theft Auto V es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games. Fue lanzado el 17 de septiembre de 2013 para las consolas PlayStation 3 y Xbox 360")
 var_Juegos.crearJuego("Grand Theft Auto V","2012","150.9","Acción","Aventura","C3","https://tecnogaming.com/wp-content/uploads/2013/04/GTA-V-portada.jpg","https://samwallbutton.files.wordpress.com/2014/10/gta-v-banner.png","Grand Theft Auto V es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games. Fue lanzado el 17 de septiembre de 2013 para las consolas PlayStation 3 y Xbox 360")
+var_Juegos.nuevoComentario("CADENA1",0,"HOY",1)
+var_Juegos.nuevoComentario("CADENA2",0,"HOY",1)
+var_Juegos.nuevoComentario("CADENA3",0,"HOY",1)
 
 #var_Juegos.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos1.csv")
 var_Juegos.listar_Juegos()
@@ -54,6 +57,21 @@ def login():
             return response
         
         response['estado'] = 0
+        return response
+
+@app.route('/agregar-comentario', methods = ["POST"])
+def agregarComent():
+    if request.method == "POST":
+        response = {}
+
+        idUser = int(request.form.get('id_usuario'))
+        idJuego = int(request.form.get('id_juego'))
+        comentario = request.form.get('comentario')
+        fecha = request.form.get('fecha')
+
+        estadoAgregado = var_Juegos.nuevoComentario(comentario,idUser,fecha,idJuego)
+        
+        response['comentario_agregado'] = estadoAgregado
         return response
 
 @app.route('/agregar-a-biblioteca', methods = ["POST"])

@@ -7,6 +7,16 @@ class CRUD_VidoJuego:
     def __init__(self):
         self.listaJuegos = []
         self.contador = 0
+    
+    #Agregua un nuevo comentario
+    def nuevoComentario(self,cadena,idUser,fecha,id):
+        for juego in self.listaJuegos:
+            if juego.id == id:
+                juego.agregar_Comentario(cadena,idUser,fecha)
+                print("comentario agregado correctamente")
+                return 1
+        print("error al agregar comentario")
+        return 0
 
     #Crea cada uno de los juegos
     def crearJuego(self,nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion):
