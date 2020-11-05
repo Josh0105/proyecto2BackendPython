@@ -128,10 +128,28 @@ def registro():
         contrasena = request.form.get('contrasena')
         contrasena2 = request.form.get('contrasena2')
 
-        estadoCreacion = var_Usuarios.crear_Usuario(nombre,apellido,userName,contrasena,contrasena2)
+        estadoCreacion = var_Usuarios.crear_Usuario(nombre,apellido,userName,contrasena,contrasena2,False)
 
         response['estado_creacion'] = estadoCreacion
         return response
+
+@app.route('/registro-admin', methods =["POST"])
+def registroAdmin():
+    if request.method == 'POST':
+
+        response = {}
+
+        nombre = request.form.get('nombre')
+        apellido = request.form.get('apellido')
+        userName = request.form.get('user_name')
+        contrasena = request.form.get('contrasena')
+        contrasena2 = request.form.get('contrasena2')
+
+        estadoCreacion = var_Usuarios.crear_Usuario(nombre,apellido,userName,contrasena,contrasena2,True)
+
+        response['estado_creacion'] = estadoCreacion
+        return response
+
 
 @app.route('/buscar',methods =["POST"])
 def buscar():

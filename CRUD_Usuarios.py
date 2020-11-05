@@ -9,10 +9,10 @@ class CRUD_Usuarios:
         #Aqui se créa el usuario mestro
         self.misUsuarios.append(Usuario(0,"Usuario","Maestro","admin","admin",True))
 
-    #método para creación de usuarios propios
+    #método para creación de usuarios cliente
     #retornos: 1: creado, 2:UserName no empieza con letra, 3: userName no es alfanumerica,
     # 4: userName ya existe, 5:contraseñas no coinciden
-    def crear_Usuario(self,nombre,apellido,userName,contrasena,contrasena2):
+    def crear_Usuario(self,nombre,apellido,userName,contrasena,contrasena2,admin):
         #Si existe algún espacio vacío
         if nombre== "" or apellido== "" or userName == "" or contrasena =="" or contrasena2 == "":
             print("Existen espacion vacios")
@@ -36,7 +36,7 @@ class CRUD_Usuarios:
             return 5
         #Si todo está correcto aumentamos el contador y creamos el usuario
         self.contador += 1
-        self.misUsuarios.append(Usuario(self.contador,nombre,apellido,userName,contrasena,False))
+        self.misUsuarios.append(Usuario(self.contador,nombre,apellido,userName,contrasena,admin))
         print("se creó un usuario con exito")
         return 1
 
