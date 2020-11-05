@@ -125,6 +125,10 @@ def buscar():
         response['resultados'] = resultadoBusqueda
         return response
 
+@app.route('/obtener-resultado-busqueda')
+def obtenerResultadoBusqueda():
+    return var_Juegos.devolver_Juegos_Lista(var_Juegos.resultadoBusqueda)
+
 
 @app.route('/recuperar',methods =["POST"])
 def recuperar():

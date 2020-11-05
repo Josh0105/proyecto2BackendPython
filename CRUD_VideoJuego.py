@@ -71,7 +71,7 @@ class CRUD_VidoJuego:
                 return juego.dump()
         return False
 
-    #devuelve los juegos de una categoria en formato json
+    #construlle un arreglo con los id's de una categoria buscada
     def buscar_Juegos(self,valor):
         try:
             self.resultadoBusqueda = []
