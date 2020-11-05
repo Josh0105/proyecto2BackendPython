@@ -17,7 +17,7 @@ class CRUD_Usuarios:
         if nombre== "" or apellido== "" or userName == "" or contrasena =="" or contrasena2 == "":
             print("Existen espacion vacios")
             return 6
-        #Si el primer caracter de userName no es mayúscula
+        #Si el primer caracter de userName no es letra
         if userName[0].isalpha() == False:
             print("UserName no empieza con una letra")
             return 2
@@ -103,33 +103,40 @@ class CRUD_Usuarios:
                 return user
         return False
     
-    #Recibe un id y cambia los atributos de ese usuario
+    #retornos: 1: creado, 2:UserName no empieza con letra, 3: userName no es alfanumerica,
+    # 4: userName ya existe, 5:contraseñas no coinciden
     def modificar_Usuario(self,id,nombre,apellido,userName,contrasena,contrasena2):
-        #Si el primer caracter de userName no es mayúscula
-        if userName[0].isupper() == False:
-            print("UserName no empieza con Mayúscula")
-            return False
+        #Si existe algún espacio vacío
+        if nombre== "" or apellido== "" or userName == "" or contrasena =="" or contrasena2 == "":
+            print("Existen espacion vacios")
+            return 6
+        #Si el primer caracter de userName no es letra
+        if userName[0].isalpha() == False:
+            print("UserName no empieza con una letra")
+            return 2
         #Si la cadena userName no es alfanumerica
         elif userName.isalnum() == False:
             print("UserName no contiene solo números o letras")
-            return False
+            return 3
         #Este for revisa si el userName ya existe en otros id diferentes de este
         for user in self.misUsuarios:
             if user.id != id:
                 if user.userName == userName:
                     print("El nuevo UserName ya existe en otro usuario")
-                    return False
+                    return 4
         #Este if evalua si las contraseñas coinciden
         if contrasena != contrasena2:
             print("Las contraseñas no coinciden")
-            return False
+            return 5
         #Si todo está correcto modificamos el usuario
         if self.misUsuarios[id].admin == True:
             self.misUsuarios[id] = Usuario(id,nombre,apellido,userName,contrasena,True)
+            print("se modificó un usuario administrador con exito")
+            return 1
         else:
             self.misUsuarios[id] = Usuario(id,nombre,apellido,userName,contrasena,False)
-            print("se modificó un usuario con exito")
-            return True
+            print("se modificó un usuario normal con exito")
+            return 1
 
     #Agrega un juego a la biblioteca del usuario retorna 1 si se agrega, 0 si ya se encontraba y 2 si no existe existe
     def agregarABiblioteca(self,idUsuario,idJuego):

@@ -97,6 +97,24 @@ def agregarABiblioteca():
         response['estado_agregado'] = estadoAgregado
         return response
 
+@app.route('/modificar-usuario', methods =["POST"])
+def modificarUsuario():
+    if request.method == 'POST':
+
+        response = {}
+
+        id = request.form.get('id_usuario')
+        nombre = request.form.get('nombre')
+        apellido = request.form.get('apellido')
+        userName = request.form.get('user_name')
+        contrasena = request.form.get('contrasena')
+        contrasena2 = request.form.get('contrasena2')
+
+        estadoCreacion = var_Usuarios.modificar_Usuario(id,nombre,apellido,userName,contrasena,contrasena2)
+
+        response['estado_creacion'] = estadoCreacion
+        return response
+
 @app.route('/registro', methods =["POST"])
 def registro():
     if request.method == 'POST':
