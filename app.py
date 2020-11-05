@@ -62,6 +62,7 @@ def login():
             response['id'] = usuario.id
             response['usuario'] = usuario.nombre
             response['estado'] = 1
+            response['admin'] = usuario.admin
 
             return response
         
