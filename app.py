@@ -130,6 +130,12 @@ def obtenerResultadoBusqueda():
     return var_Juegos.devolver_Juegos_Lista(var_Juegos.resultadoBusqueda)
 
 
+@app.route('/obtener-datos-usuario')
+def obtenerDatosUser():
+    id = int(request.args.get('id',None))
+    print("se obtubo id")
+    return var_Usuarios.devolver_datos_usuario(id)
+
 @app.route('/recuperar',methods =["POST"])
 def recuperar():
     if request.method == 'POST':

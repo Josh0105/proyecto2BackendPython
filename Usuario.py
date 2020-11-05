@@ -47,6 +47,7 @@ class Usuario:
             'nombre': self.nombre,
             'apellido': self.apellido,
             'userName': self.userName,
+            'contrasena': self.contrasena,
             'administrador': self.admin
         }
 

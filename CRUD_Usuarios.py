@@ -76,6 +76,13 @@ class CRUD_Usuarios:
                 return user.userName
         return ""
 
+    #devuelve un usuario en formato json
+    def devolver_datos_usuario(self,id):
+        for user in self.misUsuarios:
+            if user.id == id:
+                return user.dump()
+        return False
+
     #devuelve los usuarios en formato json
     def devolver_Usuarios(self):
         return json.dumps([user.dump() for user in self.misUsuarios])
