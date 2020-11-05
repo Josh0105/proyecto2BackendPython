@@ -13,6 +13,10 @@ class CRUD_Usuarios:
     #retornos: 1: creado, 2:UserName no empieza con letra, 3: userName no es alfanumerica,
     # 4: userName ya existe, 5:contraseñas no coinciden
     def crear_Usuario(self,nombre,apellido,userName,contrasena,contrasena2):
+        #Si existe algún espacio vacío
+        if nombre== "" or apellido== "" or userName == "" or contrasena =="" or contrasena2 == "":
+            print("Existen espacion vacios")
+            return 6
         #Si el primer caracter de userName no es mayúscula
         if userName[0].isalpha() == False:
             print("UserName no empieza con una letra")
