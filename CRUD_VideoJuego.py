@@ -6,6 +6,7 @@ class CRUD_VidoJuego:
     #CONSTRUCTOR CRUD
     def __init__(self):
         self.listaJuegos = []
+        self.resultadoBusqueda = []
         self.contador = 0
     
     #Agregua un nuevo comentario
@@ -70,7 +71,22 @@ class CRUD_VidoJuego:
                 return juego.dump()
         return False
 
-    #devuelve los juegos de una lista de id's
+    #devuelve los juegos de una categoria en formato json
+    def buscar_Juegos(self,valor):
+        try:
+            self.resultadoBusqueda = []
+            for juego in self.listaJuegos:
+                identificador = juego.comprobar_categoria(valor)
+                if identificador is not False:
+                    self.resultadoBusqueda.append(identificador)
+            for elemento in self.resultadoBusqueda:
+                print(elemento)
+            print(self.resultadoBusqueda.__len__())
+            return self.resultadoBusqueda.__len__()
+        except:
+            print("error en la busqueda")
+    
+    #devuelve los juegos de una lista de id's en formato json
     def devolver_Juegos_Lista(self,listado):
         try:
             listadojuegos=[]

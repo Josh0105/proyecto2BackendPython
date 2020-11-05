@@ -16,6 +16,11 @@ var_Juegos.crearJuego("Juego 5","2012","150.90","Acción","Aventura","C3","https
 var_Usuarios.agregarABiblioteca(0,2)
 var_Usuarios.agregarABiblioteca(0,3)
 var_Usuarios.agregarABiblioteca(0,5)
+var_Juegos.buscar_Juegos("a")
+var_Juegos.buscar_Juegos("Accion")
+var_Juegos.buscar_Juegos("AcciÓn")
+var_Juegos.buscar_Juegos("Accion ")
+var_Juegos.buscar_Juegos(" ")
 #var_Juegos.devolver_Juegos_Lista(var_Usuarios.misUsuarios[0].biblioteca)
 #var_Juegos.nuevoComentario("CADENA1","admin","HOY",1)
 #var_Juegos.nuevoComentario("CADENA2","admin","HOY",1)
@@ -108,6 +113,18 @@ def registro():
 
         response['estado_creacion'] = estadoCreacion
         return response
+
+@app.route('/buscar',methods =["POST"])
+def buscar():
+    if request.method == 'POST':
+        response = {}
+
+        valor = request.form.get('valor')
+
+        resultadoBusqueda = var_Juegos.buscar_Juegos(valor)
+        response['resultados'] = resultadoBusqueda
+        return response
+
 
 @app.route('/recuperar',methods =["POST"])
 def recuperar():

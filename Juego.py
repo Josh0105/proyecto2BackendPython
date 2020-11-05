@@ -1,4 +1,5 @@
 from Comentario import Comentario
+import unicodedata
 import json
 
 class Juego:
@@ -31,6 +32,19 @@ class Juego:
     #agrega un comentario a la lista de comentarios
     def agregar_Comentario(self,cadena,UserName,fecha):
         self.comentarios.append(Comentario(cadena,UserName,fecha))
+    
+    #devuelve el id del juego si coincide alguna categoria
+    def comprobar_categoria(self,valor):
+        if unicodedata.normalize('NFKD', self.categoria1).encode('ASCII', 'ignore').strip().lower() == unicodedata.normalize('NFKD', valor).encode('ASCII', 'ignore').strip().lower():
+            if self.categoria1 != "":
+                return self.id
+        if unicodedata.normalize('NFKD', self.categoria2).encode('ASCII', 'ignore').strip().lower() == unicodedata.normalize('NFKD', valor).encode('ASCII', 'ignore').strip().lower():
+            if self.categoria2 != "":
+                return self.id
+        if unicodedata.normalize('NFKD', self.categoria3).encode('ASCII', 'ignore').strip().lower() == unicodedata.normalize('NFKD', valor).encode('ASCII', 'ignore').strip().lower():
+            if self.categoria3 != "":
+                return self.id
+        return False
 
     #devuelve los comentarios en formato json
     def devolver_comentarios(self):
