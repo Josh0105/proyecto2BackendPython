@@ -38,6 +38,7 @@ class Usuario:
         self.apellido = apellido
         self.userName = userName
         self.contrasena = contrasena
+        self.admin = admin
 
     #muestra el usuario en formato json
     def dump(self):

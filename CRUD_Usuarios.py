@@ -130,11 +130,11 @@ class CRUD_Usuarios:
             return 5
         #Si todo está correcto modificamos el usuario
         if self.misUsuarios[id].admin == True:
-            self.misUsuarios[id] = Usuario(id,nombre,apellido,userName,contrasena,True)
+            self.misUsuarios[id].modificarDatos(id,nombre,apellido,userName,contrasena,True)
             print("se modificó un usuario administrador con exito")
             return 1
         else:
-            self.misUsuarios[id] == Usuario(id,nombre,apellido,userName,contrasena,False)
+            self.misUsuarios[id].modificarDatos(id,nombre,apellido,userName,contrasena,False)
             print("se modificó un usuario normal con exito")
             return 1
 
