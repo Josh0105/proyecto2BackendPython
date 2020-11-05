@@ -70,6 +70,19 @@ class CRUD_VidoJuego:
                 return juego.dump()
         return False
 
+    #devuelve los juegos de una lista de id's
+    def devolver_Juegos_Lista(self,listado):
+        try:
+            listadojuegos=[]
+            for dato in listado:
+                for juego in self.listaJuegos:
+                    if juego.id == dato:
+                        listadojuegos.append(juego)
+            print("listado creado exitosamente")
+            return json.dumps([juego.dump() for juego in listadojuegos])
+        except:
+            print("error en la lectura de la biblioteca")
+
     #devuelve los juegos en formato json
     def devolver_Juegos(self):
         return json.dumps([juego.dump() for juego in self.listaJuegos])
