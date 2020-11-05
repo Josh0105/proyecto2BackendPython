@@ -103,7 +103,7 @@ def modificarUsuario():
 
         response = {}
 
-        id = request.form.get('id_usuario')
+        id = int(request.form.get('id_usuario'))
         nombre = request.form.get('nombre')
         apellido = request.form.get('apellido')
         userName = request.form.get('user_name')
