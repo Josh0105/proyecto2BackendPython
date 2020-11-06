@@ -130,10 +130,10 @@ def nuevoJuego():
         cat2 = request.form.get('categoria_2')
         cat3 = request.form.get('categoria_3')
         foto = request.form.get('foto')
-        baner = request.form.get('baner')
+        banner = request.form.get('banner')
         descripcion = request.form.get('descripcion')
 
-        estadoCreacion = var_Juegos.crearJuego(nombreJuego,anio,precio,cat1,cat2,cat3,foto,baner,descripcion)
+        estadoCreacion = var_Juegos.crearJuego(nombreJuego,anio,precio,cat1,cat2,cat3,foto,banner,descripcion)
 
         response['estado_creacion'] = estadoCreacion
         return response
