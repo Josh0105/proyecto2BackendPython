@@ -21,8 +21,12 @@ class CRUD_VidoJuego:
 
     #Crea cada uno de los juegos
     def crearJuego(self,nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion):
-        self.contador += 1
-        self.listaJuegos.append(Juego(self.contador,nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion))
+        try:
+            self.contador += 1
+            self.listaJuegos.append(Juego(self.contador,nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion))
+            return True
+        except:
+            return False
     
     #Modifica un juego
     def modificarJuego(self,id,nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion):

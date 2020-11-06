@@ -116,6 +116,30 @@ def modificarUsuario():
         response['estado_creacion'] = estadoCreacion
         return response
 
+
+@app.route('/nuevo-juego', methods =["POST"])
+def nuevoJuego():
+    if request.method == 'POST':
+
+        response = {}
+
+        nombreJuego = request.form.get('nombre_juego')
+        anio = request.form.get('anio')
+        precio = request.form.get('precio')
+        cat1 = request.form.get('categoria_1')
+        cat2 = request.form.get('categoria_2')
+        cat3 = request.form.get('categoria_3')
+        foto = request.form.get('foto')
+        baner = request.form.get('baner')
+        descripcion = request.form.get('descripcion')
+
+        estadoCreacion = var_Juegos.crearJuego(nombreJuego,anio,precio,cat1,cat2,cat3,foto,baner,descripcion)
+
+        response['estado_creacion'] = estadoCreacion
+        return response
+
+
+
 @app.route('/registro', methods =["POST"])
 def registro():
     if request.method == 'POST':
