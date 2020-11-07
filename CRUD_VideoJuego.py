@@ -30,10 +30,15 @@ class CRUD_VidoJuego:
     
     #Modifica un juego
     def modificarJuego(self,id,nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion):
-        for juego in self.listaJuegos:
-            if juego.id == id:
-                juego.modificar_Juego(nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion)
-        return False
+        try:
+            for juego in self.listaJuegos:
+                if juego.id == id:
+                    juego.modificar_Juego(nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion)
+                    return True
+            return False
+        except:
+            return False
+    
     #Elimina un juego
     def eliminarJuego(self,id):
         self.conteoLista = 0

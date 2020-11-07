@@ -133,7 +133,7 @@ def modificarJuego():
         banner = request.form.get('banner')
         descripcion = request.form.get('descripcion')
 
-        estadoCreacion = var_Juegos.crearJuego(nombreJuego,anio,precio,cat1,cat2,cat3,foto,banner,descripcion)
+        estadoCreacion = var_Juegos.modificarJuego(id,nombreJuego,anio,precio,cat1,cat2,cat3,foto,banner,descripcion)
 
         response['estado_creacion'] = estadoCreacion
         return response
