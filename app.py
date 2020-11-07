@@ -116,6 +116,27 @@ def modificarUsuario():
         response['estado_creacion'] = estadoCreacion
         return response
 
+@app.route('/modificar-juego', methods =["POST"])
+def modificarJuego():
+    if request.method == 'POST':
+
+        response = {}
+
+        id = int(request.form.get('id_juego'))
+        nombreJuego = request.form.get('nombre_juego')
+        anio = request.form.get('anio')
+        precio = request.form.get('precio')
+        cat1 = request.form.get('categoria_1')
+        cat2 = request.form.get('categoria_2')
+        cat3 = request.form.get('categoria_3')
+        foto = request.form.get('foto')
+        banner = request.form.get('banner')
+        descripcion = request.form.get('descripcion')
+
+        estadoCreacion = var_Juegos.crearJuego(nombreJuego,anio,precio,cat1,cat2,cat3,foto,banner,descripcion)
+
+        response['estado_creacion'] = estadoCreacion
+        return response
 
 @app.route('/nuevo-juego', methods =["POST"])
 def nuevoJuego():
