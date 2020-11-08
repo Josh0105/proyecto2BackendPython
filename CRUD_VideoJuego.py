@@ -41,11 +41,15 @@ class CRUD_VidoJuego:
     
     #Elimina un juego
     def eliminarJuego(self,id):
-        self.conteoLista = 0
+        #contador Posicion controla la posicion de la lista que se está evaluando
+        #ya que el id puede ser diferente al indice de la lista de juegos y
+        #la funcion pop recibe como parametro un indice
+        self.contadorPosicion = 0
         for juego in self.listaJuegos:
             if juego.id == id:
-                self.listaJuegos.pop(self.conteoLista)
-            self.conteoLista += 1
+                self.listaJuegos.pop(self.contadorPosicion)
+                return True
+            self.contadorPosicion += 1
         return False
     
     #método para carga masiva de juegos

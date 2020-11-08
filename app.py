@@ -195,6 +195,19 @@ def registroAdmin():
         response['estado_creacion'] = estadoCreacion
         return response
 
+@app.route('/eliminar-juego', methods =["POST"])
+def eliminar_Juego():
+    if request.method == 'POST':
+
+        response = {}
+
+        id = request.form.get('id_juego')
+
+        estadoCreacion = var_Juegos.eliminarJuego(id)
+
+        response['estado_creacion'] = estadoCreacion
+        return response
+
 
 @app.route('/buscar',methods =["POST"])
 def buscar():
