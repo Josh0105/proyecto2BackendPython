@@ -201,7 +201,7 @@ def eliminar_Juego():
 
         response = {}
 
-        id = request.form.get('id_juego')
+        id = int(request.form.get('id_juego'))
 
         estadoCreacion = var_Juegos.eliminarJuego(id)
 
