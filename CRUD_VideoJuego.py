@@ -44,12 +44,12 @@ class CRUD_VidoJuego:
         #contador Posicion controla la posicion de la lista que se está evaluando
         #ya que el id puede ser diferente al indice de la lista de juegos y
         #la funcion pop recibe como parametro un indice
-        self.contadorPosicion = 0
+        #self.contadorPosicion = 0
         for juego in self.listaJuegos:
             if juego.id == id:
-                self.listaJuegos.pop(self.contadorPosicion)
+                self.listaJuegos.remove(juego)
                 return True
-            self.contadorPosicion += 1
+            #self.contadorPosicion += 1
         return False
     
     #método para carga masiva de juegos
