@@ -1,7 +1,7 @@
 from Juego import Juego
 import json
 
-#DEFINISMOS LA CLASE CRUD_VidoJuego
+#DEFINIMOS LA CLASE CRUD_VidoJuego
 class CRUD_VidoJuego:
     #CONSTRUCTOR CRUD_VidoJuego
     #Se define una lista de la clase juegos

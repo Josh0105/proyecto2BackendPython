@@ -2,6 +2,7 @@ from Comentario import Comentario
 import unicodedata
 import json
 
+#DEFINIMOS LA CLASE JUEGO
 class Juego:
     #CONSTRUCTOR DE JUEGO
     def __init__ (self,id,nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion):
@@ -46,13 +47,12 @@ class Juego:
                 return self.id
         return False
 
-    #devuelve los comentarios en formato json
+    #devuelve TODOS los comentarios de un juego en formato json
     def devolver_comentarios(self):
         return json.dumps([comentario.dump() for comentario in self.comentarios])
 
     #muestra el usuario en formato json
     def dump(self):
-
         return{
             'id': self.id,
             'nombre': self.nombre,
@@ -65,17 +65,3 @@ class Juego:
             'banner' : self.banner,
             'descripcion' : self.descripcion
         }
-
-    #muestra los datos del juego en consola
-    def mostrar(self):
-
-        print("id: " + str(self.id))
-        print("nombre: " + self.nombre)
-        print("año: " + str(self.anio))
-        print("precio: " + str(self.precio))
-        print("categoria1: " + self.categoria1)
-        print("categoria1: " + self.categoria2)
-        print("categoria1: " + self.categoria3)
-        print("foto; " + self.foto)
-        print("banner; " + self.banner)
-        print("descripcion; " + self.descripcion)
