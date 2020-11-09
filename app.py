@@ -259,7 +259,7 @@ def obtenerTododosUsuarios():
 def obtenerMiBiblioteca():
     id = int(request.args.get('id',None))
     print("se obtubo id")
-    return var_Juegos.devolver_Juegos_Lista(var_Usuarios.misUsuarios[id].biblioteca)
+    return var_Juegos.devolver_Juegos_Lista(var_Usuarios.misUsuarios[id].devolverBiblioteca)
 
 @app.route('/obtener-todos-comentarios')
 def obtenerTododosComentarios():
