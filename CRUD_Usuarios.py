@@ -1,6 +1,7 @@
 from Usuario import Usuario
 import json
 
+#DEFINIMOS LA CLASE CRUD_USUARIOS
 class CRUD_Usuarios:
     #constructor del CRUD usuarios
     def __init__(self):
@@ -11,7 +12,7 @@ class CRUD_Usuarios:
 
     #método para creación de usuarios cliente
     #retornos: 1: creado, 2:UserName no empieza con letra, 3: userName no es alfanumerica,
-    # 4: userName ya existe, 5:contraseñas no coinciden
+    # 4: userName ya existe, 5:contraseñas no coinciden, 6:existen espacios vacios
     def crear_Usuario(self,nombre,apellido,userName,contrasena,contrasena2,admin):
         #Si existe algún espacio vacío
         if nombre== "" or apellido== "" or userName == "" or contrasena =="" or contrasena2 == "":
@@ -40,36 +41,7 @@ class CRUD_Usuarios:
         print("se creó un usuario con exito")
         return 1
 
-    def crear_Usuario_Admin(self,nombre,apellido,userName,contrasena,contrasena2):
-        #Si el primer caracter de userName no es mayúscula
-        if userName[0].isupper() == False:
-            print("UserName no empieza con Mayúscula")
-            return False
-        #Si la cadena userName no es alfanumerica
-        elif userName.isalnum() == False:
-            print("UserName no contiene solo números o letras")
-            return False
-        #Este for revisa si el userName ya existe
-        for user in self.misUsuarios:
-            if user.userName == userName:
-                print("Este UserName ya existe")
-                return False
-        #Este if evalua si las contraseñas coinciden
-        if contrasena != contrasena2:
-            print("Las contraseñas no coinciden")
-            return False
-        #Si todo está correcto aumentamos el contador y creamos el usuario
-        self.contador += 1
-        self.misUsuarios.append(Usuario(self.contador,nombre,apellido,userName,contrasena,True))
-        print("se creó un usuario administrador con exito")
-        return True
-
-    #lista los usuarios en consola
-    def listar_Usuarios(self):
-        for user in self.misUsuarios:
-            print("id:\t"+ str(user.id) + "\tnombre:\t" + user.nombre + "\t\tuser:\t" + user.userName+ "\t\tadmin:\t" + str(user.admin))
-    
-    #devuelve el nombre de un usuario
+    #recive un ID y devuelve el nombre del usuario
     def devolver_nombre_usuario(self,id):
         for user in self.misUsuarios:
             if user.id == id:
@@ -83,7 +55,7 @@ class CRUD_Usuarios:
                 return user.dump()
         return False
 
-    #devuelve los usuarios en formato json
+    #devuelve todos los usuarios en formato json
     def devolver_Usuarios(self):
         return json.dumps([user.dump() for user in self.misUsuarios])
 
@@ -95,7 +67,7 @@ class CRUD_Usuarios:
                 return user
         return False
 
-    #devuelve la contraseña del usuario si existe
+    #devuelve la contraseña del usuario si existe el usuario
     def recuperar_Contrasena(self,userName):
         for user in self.misUsuarios:
             if user.userName == userName:
@@ -103,8 +75,9 @@ class CRUD_Usuarios:
                 return user
         return False
     
+    #método para la modificación de un usuario
     #retornos: 1: creado, 2:UserName no empieza con letra, 3: userName no es alfanumerica,
-    # 4: userName ya existe, 5:contraseñas no coinciden
+    # 4: userName ya existe, 5:contraseñas no coinciden, 6: espacios vacios
     def modificar_Usuario(self,id,nombre,apellido,userName,contrasena,contrasena2):
         #Si existe algún espacio vacío
         if nombre== "" or apellido== "" or userName == "" or contrasena =="" or contrasena2 == "":
@@ -138,7 +111,8 @@ class CRUD_Usuarios:
             print("se modificó un usuario normal con exito")
             return 1
 
-    #Agrega un juego a la biblioteca del usuario retorna 1 si se agrega, 0 si ya se encontraba y 2 si no existe existe
+    #Agrega un juego a la biblioteca del usuario retorna 1 si se agrega, 
+    # #0 si ya se encontraba y 2 si no existe existe el usuario
     def agregarABiblioteca(self,idUsuario,idJuego):
         for user in self.misUsuarios:
             if user.id == idUsuario:
@@ -148,23 +122,3 @@ class CRUD_Usuarios:
                     return 0
         print("usuario no existe")
         return 2
-    
-#var_Usuarios = CRUD_Usuarios()
-#var_Usuarios.crear_Usuario("nombre1","apellido1","Prueba1","contra1","contra1")
-#var_Usuarios.crear_Usuario("nombre2","apellido2","Prueba2","contra2","contra2")
-#var_Usuarios.crear_Usuario("nombre3","apellido3","Prueba3","contra3","contra3")
-#var_Usuarios.listar_Usuarios()
-#var_Usuarios.agregarABiblioteca(0,2)
-#var_Usuarios.agregarABiblioteca(0,2)
-#var_Usuarios.agregarABiblioteca(1,2)
-#var_Usuarios.agregarABiblioteca(2,2)
-#var_Usuarios.agregarABiblioteca(4,2)
-#var_Usuarios.devolver_Usuarios()
-#var_Usuarios.autenticar_Usuario("Admin","admin")
-#var_Usuarios.recuperar_Contrasena("Admin")
-#var_Usuarios.recuperar_Contrasena("Prueba2")
-#var_Usuarios.modificar_Usuario(2,"nombre10","apellido10","Prueba2","contra10","contra10")
-#var_Usuarios.modificar_Usuario(0,"SSSS","SSSS","Adm","contra10","contra10")
-#var_Usuarios.crear_Usuario_Admin("Admin2","Admin2","Admin2","contra50","contra50")
-#var_Usuarios.listar_Usuarios()
-#var_Usuarios.recuperar_Contrasena("Prueba2")
