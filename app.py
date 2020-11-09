@@ -251,6 +251,10 @@ def recuperar():
 def obtenerTododosJuegos():
     return var_Juegos.devolver_Juegos()
 
+@app.route('/obtener-todos-usuarios')
+def obtenerTododosUsuarios():
+    return var_Usuarios.devolver_Usuarios()
+
 @app.route('/obtener-mi-biblioteca')
 def obtenerMiBiblioteca():
     id = int(request.args.get('id',None))
