@@ -1,9 +1,11 @@
 from Juego import Juego
 import json
-import csv
 
+#DEFINISMOS LA CLASE CRUD_VidoJuego
 class CRUD_VidoJuego:
-    #CONSTRUCTOR CRUD
+    #CONSTRUCTOR CRUD_VidoJuego
+    #Se define una lista de la clase juegos
+    #una lista de busqueda y un contador de juegos
     def __init__(self):
         self.listaJuegos = []
         self.resultadoBusqueda = []
@@ -39,12 +41,9 @@ class CRUD_VidoJuego:
         except:
             return False
     
-    #Elimina un juego
+    #Elimina un juego según su id
     def eliminarJuego(self,id):
-        #contador Posicion controla la posicion de la lista que se está evaluando
-        #ya que el id puede ser diferente al indice de la lista de juegos y
-        #la funcion pop recibe como parametro un indice
-        #self.contadorPosicion = 0
+        #si el id coincide con el id de la lista se elimina
         for juego in self.listaJuegos:
             if juego.id == id:
                 self.listaJuegos.remove(juego)
@@ -52,39 +51,14 @@ class CRUD_VidoJuego:
             #self.contadorPosicion += 1
         return False
     
-    #método para carga masiva de juegos
-    def cargaMasiva(self,ruta):
-        try:
-            #abrimos la ruta
-            with open (ruta,newline="") as File:
-                reader = csv.reader(File)
-                #contador de lineas
-                self.conteoLineas = 0
-                #para cada una de las lineas
-                for row in reader:
-                    #el if es para no tomar en cuenta la primera linea
-                    if self.conteoLineas > 0: 
-                        print(row)
-                        #ESTA LINEA CREA EL JUEGO
-                        self.crearJuego(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
-                    self.conteoLineas +=1
-        except Exception as e:
-            print(e)
-            print("no se pudo realizar la lectura")
-            return False
-    
-    #lista los juegos en consola
-    def listar_Juegos(self):
-        for juego in self.listaJuegos:
-            print("index" + str(self.listaJuegos.index(juego)) + "\tid:" + str(juego.id) + "\t" + juego.nombre + "\t" + str(juego.anio) + "\t" + str(juego.precio) + "\t" + juego.categoria1 + "\t" + juego.categoria2 + "\t" + juego.categoria3 + "\t" + juego.foto + "\t" + juego.banner + "\t" +juego.descripcion)
-    
+    #Recibe un id de juego y devuelve los datos en formato Json
     def devolver_Juego(self,id):
         for juego in self.listaJuegos:
             if juego.id==id:
                 return juego.dump()
         return False
 
-    #construlle un arreglo con los id's de una categoria buscada
+    #construlle y retorna un arreglo con los id's de una categoria buscada
     def buscar_Juegos(self,valor):
         try:
             self.resultadoBusqueda = []
@@ -112,7 +86,7 @@ class CRUD_VidoJuego:
         except:
             print("error en la lectura de la biblioteca")
 
-    #devuelve los juegos en formato json
+    #devuelve todos juegos en formato json
     def devolver_Juegos(self):
         return json.dumps([juego.dump() for juego in self.listaJuegos])
 
@@ -122,8 +96,3 @@ class CRUD_VidoJuego:
             if juego.id == id:
                 return juego.devolver_comentarios()
         return False
-
-#pruebaJuegoCRUD = CRUD_VidoJuego()
-#pruebaJuegoCRUD.cargaMasiva("C:\\Users\\Jonathan Calo\\Desktop\\datosJuegos.csv")
-#pruebaJuegoCRUD.devolver_Juego(1)
-#pruebaJuegoCRUD.listar_Juegos()
